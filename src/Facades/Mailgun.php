@@ -1,6 +1,6 @@
 <?php
 
-namespace Bogardo\Mailgun\Facades;
+namespace BahriCanli\Mailgun\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

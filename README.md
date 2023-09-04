@@ -57,7 +57,7 @@ If using Laravel 5.1 to 5.4, Register the ServiceProvider and (optionally) the F
 
 'providers' => [
     ...
-    Bogardo\Mailgun\MailgunServiceProvider::class
+    BahriCanli\Mailgun\MailgunServiceProvider::class
 
 ];
 
@@ -65,14 +65,14 @@ If using Laravel 5.1 to 5.4, Register the ServiceProvider and (optionally) the F
 
 'aliases' => [
 	...
-    'Mailgun' => Bogardo\Mailgun\Facades\Mailgun::class
+    'Mailgun' => BahriCanli\Mailgun\Facades\Mailgun::class
 ],
 ```
 
 Next, publish the config file with the following `artisan` command.<br />
 
 ```bash
-php artisan vendor:publish --provider="Bogardo\Mailgun\MailgunServiceProvider" --tag="config"
+php artisan vendor:publish --provider="BahriCanli\Mailgun\MailgunServiceProvider" --tag="config"
 ```
 
 or if using Laravel 5.5 <br />
@@ -298,7 +298,7 @@ Recipient Variables are custom variables that you define, which you can then ref
 ###### Examples
 
 ```php
-use Bogardo\Mailgun\Mail\Message;
+use BahriCanli\Mailgun\Mail\Message;
 
 Mailgun::send('email.batch', $data, function(Message $message){
     $message->to([
@@ -611,7 +611,7 @@ Mailgun::send('emails.welcome', $data, function ($message) {
 ## Dependency Injection
 
 All the examples in this document are using the `Mailgun` facade.
-The Mailgun service is registered in the Container as `mailgun` but you can also use the Interface `Bogardo\Mailgun\Contracts\Mailgun` for dependency injection in your app.
+The Mailgun service is registered in the Container as `mailgun` but you can also use the Interface `BahriCanli\Mailgun\Contracts\Mailgun` for dependency injection in your app.
 
 #### Example
 
@@ -622,14 +622,14 @@ class CustomController extends Controller
 {
 
     /**
-     * @var \Bogardo\Mailgun\Contracts\Mailgun
+     * @var \BahriCanli\Mailgun\Contracts\Mailgun
      */
     protected $mailgun;
 
     /**
-     * @param \Bogardo\Mailgun\Contracts\Mailgun $mailgun
+     * @param \BahriCanli\Mailgun\Contracts\Mailgun $mailgun
      */
-    public function __construct(\Bogardo\Mailgun\Contracts\Mailgun $mailgun)
+    public function __construct(\BahriCanli\Mailgun\Contracts\Mailgun $mailgun)
     {
         $this->mailgun = $mailgun;
     }

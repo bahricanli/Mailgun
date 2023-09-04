@@ -1,6 +1,6 @@
 <?php
 
-namespace Bogardo\Mailgun\Validation;
+namespace BahriCanli\Mailgun\Validation;
 
 use Mailgun\Mailgun;
 

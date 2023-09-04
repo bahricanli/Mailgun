@@ -1,8 +1,8 @@
 <?php
 
-namespace Bogardo\Mailgun;
+namespace BahriCanli\Mailgun;
 
-use Bogardo\Mailgun\Contracts\Mailgun as MailgunContract;
+use BahriCanli\Mailgun\Contracts\Mailgun as MailgunContract;
 use Illuminate\Support\ServiceProvider;
 use Mailgun\Mailgun as MailgunApi;
 
