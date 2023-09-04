@@ -47,7 +47,7 @@
     },
     "suggest": {
         "barryvdh/laravel-ide-helper": "Add accurate autocompletion for Laravel Facades, including the Mailgun facade",
-        "php-http/guzzle7-adapter": "Use Guzzle 7 as your Mailgun HTTP client",
+        "php-http/guzzle7-adapter": "Use Guzzle 7 as your Mailgun HTTP client"
     },
     "extra": {
         "laravel": {
