@@ -20,7 +20,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "illuminate/support": "^8.75",
-        "mailgun/mailgun-php": "^2.1",
+        "mailgun/mailgun-php": "^3.6",
         "nesbot/carbon": "^2.0",
         "php-http/message": "^1.3"
     },
