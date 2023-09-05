@@ -7,7 +7,6 @@ use Illuminate\Support\ServiceProvider;
 
 use Mailgun\HttpClient\HttpClientConfigurator;
 use Mailgun\Hydrator\NoopHydrator;
-
 use Mailgun\Mailgun as MailgunApi;
 
 class MailgunServiceProvider extends ServiceProvider
@@ -49,6 +48,8 @@ class MailgunServiceProvider extends ServiceProvider
 
             $clientAdapter = $this->app->make('mailgun.client');
 
+            $hydrator = new NoopHydrator();
+
             $configurator = new HttpClientConfigurator();
             $configurator->setHttpClient($clientAdapter);
 
@@ -56,7 +57,7 @@ class MailgunServiceProvider extends ServiceProvider
             $configurator->setApiKey( $config->get('mailgun.api_key') );
             $configurator->setDebug($config->get('mailgun.testmode'));
 
-            $mg = new MailgunApi($configurator, new NoopHydrator());
+            $mg = new MailgunApi($configurator, $hydrator);
 
             return new Service($mg, $this->app->make('view'), $config);
         });
