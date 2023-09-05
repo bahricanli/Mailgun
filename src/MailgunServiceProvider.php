@@ -4,6 +4,9 @@ namespace BahriCanli\Mailgun;
 
 use BahriCanli\Mailgun\Contracts\Mailgun as MailgunContract;
 use Illuminate\Support\ServiceProvider;
+
+use Mailgun\HttpClient\HttpClientConfigurator;
+use Mailgun\Hydrator\NoopHydrator;
 use Mailgun\Mailgun as MailgunApi;
 
 class MailgunServiceProvider extends ServiceProvider
@@ -42,13 +45,14 @@ class MailgunServiceProvider extends ServiceProvider
          * Register main Mailgun service
          */
         $this->app->bind('mailgun', function () use ($config) {
-            $clientAdapter = $this->app->make('mailgun.client');
 
-            $mg = new MailgunApi(
-                $config->get('mailgun.api_key'),
-                $clientAdapter,
-                $config->get('mailgun.api.endpoint')
-            );
+            $configurator = new HttpClientConfigurator();
+            $configurator->setEndpoint( $config->get('mailgun.api.endpoint') );
+            $configurator->setApiKey( $config->get('mailgun.api_key') );
+            $configurator->setDebug(true);
+
+            $mg = new MailgunApi($configurator, new NoopHydrator());
+
             $mg->setApiVersion($config->get('mailgun.api.version'));
             $mg->setSslEnabled($config->get('mailgun.api.ssl', true));
 
